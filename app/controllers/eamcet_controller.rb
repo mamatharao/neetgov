@@ -8,7 +8,7 @@ class EamcetController < ApplicationController
   def mathematics
   	@eamcet = Eamcet.new
   	if params[:count]
-  		tc = Ecet.where(:test_count => params[:count]).last
+  		tc = Eamcet.where(:test_count => params[:count]).last
   		if tc.blank?
   			tc = 0
   		else
@@ -17,20 +17,15 @@ class EamcetController < ApplicationController
   	else
   		tc=0
   	end
-  	@mc = Ecet.where(:subject => "Mathematics", :test_count => tc)
-  	@pc = Ecet.where(:subject => "Physics", :test_count => tc)
-    @cc = Ecet.where(:subject => "Chemistry", :test_count => tc)
-    @civc = Ecet.where(:subject => "Civil", :test_count => tc)
-    @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
-    @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
-    @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+  	@mc = Eamcet.where(:subject => "Mathematics", :test_count => tc)
+  	@pc = Eamcet.where(:subject => "Physics", :test_count => tc)
+    @cc = Eamcet.where(:subject => "Chemistry", :test_count => tc)
   end
 
   def physics
-  	@ecet = Ecet.new
+  	@ecet = Eamcet.new
   	if params[:count]
-  		tc = Ecet.where(:test_count => params[:count]).last
+  		tc = Eamcet.where(:test_count => params[:count]).last
   		if tc.blank?
   			tc = 0
   		else
@@ -39,20 +34,15 @@ class EamcetController < ApplicationController
   	else
   		tc=0
   	end
-  	@mc = Ecet.where(:subject => "Mathematics", :test_count => tc)
-  	@pc = Ecet.where(:subject => "Physics", :test_count => tc)
-    @cc = Ecet.where(:subject => "Chemistry", :test_count => tc)
-    @civc = Ecet.where(:subject => "Civil", :test_count => tc)
-    @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
-    @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
-    @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+  	@mc = Eamcet.where(:subject => "Mathematics", :test_count => tc)
+  	@pc = Eamcet.where(:subject => "Physics", :test_count => tc)
+    @cc = Eamcet.where(:subject => "Chemistry", :test_count => tc)
   end
 
   def chemistry
-    @ecet = Ecet.new
+    @ecet = Eamcet.new
     if params[:count]
-      tc = Ecet.where(:test_count => params[:count]).last
+      tc = Eamcet.where(:test_count => params[:count]).last
       if tc.blank?
         tc = 0
       else
@@ -61,14 +51,9 @@ class EamcetController < ApplicationController
     else
       tc=0
     end
-    @mc = Ecet.where(:subject => "Mathematics", :test_count => tc)
-    @pc = Ecet.where(:subject => "Physics", :test_count => tc)
-    @cc = Ecet.where(:subject => "Chemistry", :test_count => tc)
-    @civc = Ecet.where(:subject => "Civil", :test_count => tc)
-    @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
-    @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
-    @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @mc = Eamcet.where(:subject => "Mathematics", :test_count => tc)
+    @pc = Eamcet.where(:subject => "Physics", :test_count => tc)
+    @cc = Eamcet.where(:subject => "Chemistry", :test_count => tc)
   end
 
   def addecet

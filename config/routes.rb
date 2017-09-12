@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'eamcet/index'
 
-  root 'ecet#index'
+  root 'home#index'
 
   # ***********  ECET  *****************
   get "/addecet/mathematics/:count" => "ecet#mathematics"
@@ -29,9 +28,12 @@ Rails.application.routes.draw do
   get "/addecet/civil" => "ecet#civil"
   
   get '/adminecet' => "ecet#index"
+
   post '/addecet' => 'ecet#addecet'
   # ***********  EAMCET  *****************
-  
+  get '/admineamcet' => "eamcet#index"
+
+
   devise_for :users, :controllers => { :registrations => 'registrations'}
   devise_scope :user do
       get "/login", :to => 'devise/sessions#new'
