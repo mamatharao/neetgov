@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912101907) do
+ActiveRecord::Schema.define(version: 20170912120910) do
+
+  create_table "eamcets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "subject"
+    t.string "short_subject"
+    t.text "question"
+    t.string "a"
+    t.string "b"
+    t.string "c"
+    t.string "d"
+    t.string "answer"
+    t.integer "test_count"
+    t.string "image_yes"
+    t.string "image_question"
+    t.string "imagea"
+    t.string "imageb"
+    t.string "imagec"
+    t.string "imaged"
+    t.string "imaget"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ecets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "subject"

@@ -186,9 +186,9 @@ class EcetController < ApplicationController
   	@ecet = Ecet.new(ecet_params)
   	@test_count = ecet_params['test_count']
         if @ecet.save
-            redirect_to "/addquestions/#{ecet_params['subject']}/#{ecet_params['test_count']}",  notice: 'Ecet Question was successfully added'
+            redirect_to "/addecet/#{ecet_params['subject']}/#{ecet_params['test_count']}",  notice: 'Ecet Question was successfully added'
         else
-            redirect_to "/addquestions/#{ecet_params['subject']}/#{ecet_params['test_count']}", alert: "Something Wrong Please Check Input Feilds, Image allow only 'jpg jpeg gif png' "
+            redirect_to "/addecet/#{ecet_params['subject']}/#{ecet_params['test_count']}", alert: "Something Wrong Please Check Input Feilds, Image allow only 'jpg jpeg gif png' "
         end
   end
 
