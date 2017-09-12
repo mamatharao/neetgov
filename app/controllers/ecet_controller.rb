@@ -23,7 +23,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -45,7 +45,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -67,7 +67,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -89,7 +89,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -111,7 +111,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -133,7 +133,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -155,7 +155,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -177,7 +177,7 @@ class EcetController < ApplicationController
     @civc = Ecet.where(:subject => "Civil", :test_count => tc)
     @eec = Ecet.where(:subject => "Electrical & Electronics", :test_count => tc)
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
-    @csc = Ecet.where(:subject => "Computer Science and Engineering", :test_count => tc)
+    @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
   end
 
@@ -186,9 +186,9 @@ class EcetController < ApplicationController
   	@ecet = Ecet.new(ecet_params)
   	@test_count = ecet_params['test_count']
         if @ecet.save
-            redirect_to "/addecet/#{ecet_params['subject']}/#{ecet_params['test_count']}",  notice: 'Ecet Question was successfully added'
+            redirect_to "/addecet/#{ecet_params['short_subject']}/#{ecet_params['test_count']}",  notice: 'Ecet Question was successfully added'
         else
-            redirect_to "/addecet/#{ecet_params['subject']}/#{ecet_params['test_count']}", alert: "Something Wrong Please Check Input Feilds, Image allow only 'jpg jpeg gif png' "
+            redirect_to "/addecet/#{ecet_params['short_subject']}/#{ecet_params['test_count']}", alert: "Something Wrong Please Check Input Feilds, Image allow only 'jpg jpeg gif png' "
         end
   end
 
