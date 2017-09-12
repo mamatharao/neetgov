@@ -1,0 +1,172 @@
+<% content_for :title, "NEET GOV ONLINE EXAMINATION PORTAL" %>
+	<!-- ============================================================== -->
+ <!-- Start right Content here -->
+ <!-- ============================================================== -->
+ <div class="content-page">
+  <!-- Start content -->
+  <div class="content">
+   <div class="container">
+    <!-- Page-Title -->
+    <div class="row">
+      <div class="col-sm-12">
+    <ol class="breadcrumb">
+          <li><b><a href="addeamcet/mathematics">Mathematics</a></b></li>
+          <li><b><a href="addeamcet/physics">Physics</a></b></li>
+          <li><b><a href="addeamcet/chemistry">Chemistry</a></b></li>
+        </ol>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="page-title">Add Eamcet Questions</h4>
+        <ol class="breadcrumb">
+          <li><b><a href="/">Home</a></b></li>
+          <li><b><a href="/admineamcet">Ecet</a></b></li>
+          <li><b><a href="/admineamcet">Subjects</a></b></li>
+          <li class="active">Add Questions</li>
+        </ol>
+        <% if notice %>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= notice %>
+        </div>
+        <% end %>
+        <% if alert %>
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= alert %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+
+
+
+<div class="container">
+
+<br>
+  <%= simple_form_for @eamcet, url: {:action => "addemacet_que",  :method => "post"} do |f| %>              
+    <div class="row">
+      <div class="col-sm-7">
+          <div class="col-sm-10">
+            <span style="font-size: 20px;"><b class="text-warning">EAMCET </b>
+            <b class="text-success"> <% if params[:subject] %>
+                                    "<%= params[:subject].upcase %>"
+                                    <% end %>
+                                     </b><b class="text-warning">FORM</b></span>
+          </div>
+          <div class="col-sm-2">
+            <!--  <%= f.input :subject, :required => true, :collection => ['Mathematics','Physics','Chemistry','Civil', 'Electrical & Electronics', 'Mechanical', 'Electronics & Communication', 'Computer Science and Engineering'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select Subject" %><br> -->
+            <%= f.hidden_field :subject, :value => params[:subject], :required => true, :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
+            <%= f.hidden_field :short_subject, :value => params[:subject], :required => true, :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
+          </div>
+      </div><br>
+      <div class="col-sm-5">
+        <div class="row">
+          <div class="col-sm-4">Question Image :</div>
+          <div class="col-sm-6"><%= f.file_field :que_image %></div>
+        </div>
+      </div>
+    </div> 
+      <%= f.input :question, :required => true, :placeholder => "Add Question", :label => false, :input_html => {:style => "width:100%;", :class => "form-control", :rows => 3, :columns => 5} %><br>
+      <div class="row">
+        <div class="col-sm-4">
+          <%= f.input :a, :required => true, :placeholder => "option A", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
+          <%= f.input :b, :required => true, :placeholder => "option B", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.input :c, :required => true, :placeholder => "option C", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
+          <%= f.input :d, :required => true, :placeholder => "option D", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
+        </div>
+        <div class="col-sm-4">
+          <%= f.input :answer, :required => true, :collection => ['a','b','c','d'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select Subject" %>
+          <div class="row">
+            <div class="col-sm-6">
+              <%= f.input :test_count, :placeholder => "Test Count", :label => false, :input_html => {:style => "width:100%;", :value =>  params[:count], :class => "form-control"} %>
+            </div>
+            <div class="col-sm-6">
+               <%= f.input :image_yes, :collection => ['image_yes'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select Type" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr><hr>
+      <div class="row">
+        <div class="col-sm-2">
+          <%= f.input :imagea, as: :file, :label => false %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.input :imageb, as: :file, :label => false %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.input :imagec, as: :file, :label => false %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.input :imaged, as: :file, :label => false %>
+        </div>
+      </div><br>
+      <div class="text-center">
+        <%= f.submit "submit", :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div><br>
+
+  <table class="table table-hover">
+  <tr>
+  <th>Subject</th>
+  <th>Test</th>
+  <th> Added Questions</th>
+  </tr>
+
+    <tr>
+        <td class="bg-info">Mathamatics</td>       
+            <% if @mc.blank?%>
+            <td class="bg-info">0</td>
+            <td class="bg-info">0</td>      
+            <% else %>
+            <% @mc.each do |m| %>
+               <td class="bg-info"><%= m.test_count %></td>
+              <td class="bg-info"><%= @mc.count %></td> 
+             <% break %>
+             <% end %>
+             <% end %>
+      </tr>
+
+      <tr>
+        <td class="bg-danger">Chemistry</td>       
+            <% if @cc.blank?%>
+            <td class="bg-danger">0</td>
+            <td class="bg-danger">0</td>      
+            <% else %>
+            <% @cc.each do |m| %>
+               <td class="bg-danger"><%= m.test_count %></td>
+              <td class="bg-danger"><%= @cc.count %></td> 
+             <% break %>
+             <% end %>
+             <% end %>
+      </tr>
+
+      
+
+
+      <tr>
+        <td class="bg-success">Physics</td>       
+            <% if @pc.blank?%>
+            <td class="bg-success">0</td>
+            <td class="bg-success">0</td>      
+            <% else %>
+            <% @pc.each do |p| %>
+               <td class="bg-success"><%= p.test_count %></td>
+              <td class="bg-success"><%= @pc.count %></td> 
+             <% break %>
+             <% end %>
+             <% end %>
+      </tr>
+
+      
+
+      
+</table>
+</div>
+</div>
+</div>

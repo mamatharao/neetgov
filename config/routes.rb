@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   post '/addecet' => 'ecet#addecet'
   # ***********  EAMCET  *****************
   get '/admineamcet' => "eamcet#index"
-
+  get "/addeamcet/:subject/:count" => "eamcet#addeamcet"
+  get "/addeamcet/:subject" => "eamcet#addeamcet"
+  post '/addemacetque' => 'eamcet#addemacet_que'
 
   devise_for :users, :controllers => { :registrations => 'registrations'}
   devise_scope :user do
