@@ -1,8 +1,9 @@
 class EamcetController < ApplicationController
   require 'carrierwave/orm/activerecord'
   before_action :authenticate_user!
+  before_action :check_admin
   def index
-  	
+  	@total =Eamcet.select(:test_count).map(&:test_count).uniq
   end
 
   def addeamcet
@@ -22,6 +23,9 @@ class EamcetController < ApplicationController
     @cc = Eamcet.where(:subject => "Chemistry", :test_count => tc)
   end
 
+  def test_count_question
+    @eamcet = Eamcet.where(:test_count => params[:test_count])
+  end
   # def physics
   # 	@ecet = Eamcet.new
   # 	if params[:count]

@@ -2,7 +2,7 @@
     <h2>Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+     <div class="bg-success"> <%= devise_error_messages! %></div>
 
       <div class="field">
         <%= f.label :First_Name %><br />
@@ -34,7 +34,7 @@
 
       <div class="field">
         <%= f.label :Mobile %><br />
-        <%= f.text_field :mobile, required: true %>
+        <%= f.text_field :mobile, required: true, :pattern => "[789][0-9]{9}", :minlength =>10, :maxlength => 10 %>
       </div>
       
       <div class="field">

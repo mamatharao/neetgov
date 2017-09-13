@@ -1,6 +1,7 @@
 class EcetController < ApplicationController
 	require 'carrierwave/orm/activerecord'
   before_action :authenticate_user!
+  before_action :check_admin
   def index
   	
   end
@@ -25,6 +26,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc+@mecc
   end
 
   def physics

@@ -35,6 +35,7 @@ gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'carrierwave', '~> 1.0'
 gem 'simple_form'
 gem 'passenger', '~> 5.0', '>= 5.0.30'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

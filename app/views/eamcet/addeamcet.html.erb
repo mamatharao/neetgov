@@ -21,7 +21,7 @@
         <h4 class="page-title">Add Eamcet Questions</h4>
         <ol class="breadcrumb">
           <li><b><a href="/">Home</a></b></li>
-          <li><b><a href="/admineamcet">Ecet</a></b></li>
+          <li><b><a href="/admin">Admin</a></b></li>
           <li><b><a href="/admineamcet">Subjects</a></b></li>
           <li class="active">Add Questions</li>
         </ol>
@@ -68,7 +68,7 @@
         </div>
       </div>
     </div> 
-      <%= f.input :question, :required => true, :placeholder => "Add Question", :label => false, :input_html => {:style => "width:100%;", :class => "form-control", :rows => 3, :columns => 5} %><br>
+      <%= f.input :question, as: :ckeditor, :required => true, :placeholder => "Add Question", :label => false, :input_html => {ckeditor: { toolbar: 'Full' }, :style => "width:100%;", :class => "form-control", :rows => 3, :columns => 5} %><br>
       <div class="row">
         <div class="col-sm-4">
           <%= f.input :a, :required => true, :placeholder => "option A", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>

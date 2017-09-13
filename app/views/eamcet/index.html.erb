@@ -1,10 +1,45 @@
-<div class="content-page">
-  <!-- Start content -->
-  <div class="content">
+
    <div class="container">
    		<a href="addeamcet/mathematics">Mathematics</a><br>
    		<a href="addeamcet/physics">Physics</a><br>
    		<a href="addeamcet/chemistry">Chemistry</a><br>
-   </div>
-   </div>
+   <br>
+   <% @total.each do |t| %>
+   	<% if t %>
+   	<div class="panel panel-success">
+      <div class="panel-heading">TEST <%= t %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admineamcet/test_questions/<%=t%>"><button class="btn btn-primary">View TEST <%= t %> Questions</button></a></div>
+      <div class="panel-body">
+
+      	<div class="row">
+      		<div class="col-sm-2">
+	      		Mathematics
+	      	</div>
+	      	<div class="col-sm-2">
+	      		<%= Eamcet.where(:subject => "mathematics", :test_count => t).count %>
+	      	</div>
+	    </div>
+			<br>
+	    <div class="row">
+      		<div class="col-sm-2">
+	      		Physics
+	      	</div>
+	      	<div class="col-sm-2">
+	      		<%= Eamcet.where(:subject => "physics", :test_count => t).count %>
+	      	</div>
+	    </div>
+	    	<br>
+		<div class="row">
+      		<div class="col-sm-2">
+	      		Chemistry
+	      	</div>
+	      	<div class="col-sm-2">
+	      		<%= Eamcet.where(:subject => "chemistry", :test_count => t).count %>
+	      	</div>
+	    </div>
+	    <br>
+	    
+      </div>
+	</div>
+   <% end %>
+   <% end %>
 </div>

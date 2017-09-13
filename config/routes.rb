@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  # ***********  EAMCET  *****************
+  get "/admin" =>"admin#index"
+
+
   # ***********  ECET  *****************
   get "/addecet/mathematics/:count" => "ecet#mathematics"
   get "/addecet/mathematics" => "ecet#mathematics"
@@ -34,7 +38,10 @@ Rails.application.routes.draw do
   get '/admineamcet' => "eamcet#index"
   get "/addeamcet/:subject/:count" => "eamcet#addeamcet"
   get "/addeamcet/:subject" => "eamcet#addeamcet"
+  get '/admineamcet/test_questions/:test_count' => 'eamcet#test_count_question'
   post '/addemacetque' => 'eamcet#addemacet_que'
+
+
 
   devise_for :users, :controllers => { :registrations => 'registrations'}
   devise_scope :user do
