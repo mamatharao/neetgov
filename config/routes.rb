@@ -34,12 +34,17 @@ Rails.application.routes.draw do
   get '/adminecet' => "ecet#index"
 
   post '/addecet' => 'ecet#addecet'
+
+  get '/adminecet/test_questions/:test_count' => 'ecet#test_count_question'
+
+  delete '/ecet/question/:id/delete/:test_count/perminent' => 'ecet#destroy'
   # ***********  EAMCET  *****************
   get '/admineamcet' => "eamcet#index"
   get "/addeamcet/:subject/:count" => "eamcet#addeamcet"
   get "/addeamcet/:subject" => "eamcet#addeamcet"
   get '/admineamcet/test_questions/:test_count' => 'eamcet#test_count_question'
   post '/addemacetque' => 'eamcet#addemacet_que'
+  delete '/eamcet/question/:id/delete/:test_count/perminent' => 'eamcet#destroy'
 
 
 

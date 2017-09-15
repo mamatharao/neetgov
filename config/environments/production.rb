@@ -80,6 +80,18 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  config.assets.raise_runtime_errors = true
+
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'localhost:3000',
+     user_name:            'neetgov@gmail.com',
+    password:             '143neetgov',
+    authentication:       'plain',
+    enable_starttls_auto: true  }
+
+
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter

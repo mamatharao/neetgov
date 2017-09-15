@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
           <li><b><a href="/">Home</a></b></li>
           <li><b><a href="/admin">Admin</a></b></li>
-          <li><b><a href="/admineamcet">Eamcet Subjects</a></b></li>
+          <li><b><a href="/adminecet">Ecet Subjects</a></b></li>
           <li class="active">Add Questions</li>
         </ol>
       </div>
@@ -27,11 +27,10 @@
 		<td>
 			<%=t.question.html_safe %>
 			<% if t.que_image? %>
-				<ul class="enlarge">
+			    <ul class="enlarge">
 			    <li><%= image_tag(t.que_image, :width => 400, :height => 200, :class => "thumb") %>
-			    	<span><%= image_tag(t.que_image, :width => 600, :height => 400, :class => "thumb") %><br/>
-			    				<b class="text-danger">Move slide bar left or right to view fiull Image</b></span>
-			    			</li>
+			    	<span><%= image_tag(t.que_image, :width => 600, :height => 400, :class => "thumb") %><b class="text-danger">Move slide bar left or right to view fiull Image</b></span>
+			    </li>
 			    </ul>
 			<% end %>
 		</td>
@@ -85,7 +84,8 @@
 			<% end %>
 		</td>
 		<td><%=t.answer.html_safe %></td>
-		<td><%= link_to "delete","/eamcet/question/#{t.id}/delete/#{t.test_count}/perminent", method: :delete, data: { confirm: "Delete S.No - #{c} ?"} %>
+		<td><%= link_to "delete","/ecet/question/#{t.id}/delete/#{t.test_count}/perminent", method: :delete, data: { confirm: "Delete S.No - #{c} ?"} %>
+</td>
 	</tr>
 	<% c+=1 %>
 <% end %>

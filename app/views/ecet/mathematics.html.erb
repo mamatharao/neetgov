@@ -71,7 +71,7 @@
         </div>
       </div>
     </div> 
-      <%= f.input :question, :required => true, :placeholder => "Add Question", :label => false, :input_html => {:style => "width:100%;", :class => "form-control", :rows => 3, :columns => 5} %><br>
+      <%= f.input :question, as: :ckeditor, :required => true, :placeholder => "Add Question", :label => false, :input_html => {ckeditor: { toolbar: 'Full' }, :style => "width:100%;", :class => "form-control", :rows => 3, :columns => 5} %><br>
       <div class="row">
         <div class="col-sm-4">
           <%= f.input :a, :required => true, :placeholder => "option A", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
@@ -82,7 +82,7 @@
           <%= f.input :d, :required => true, :placeholder => "option D", :label => false, :input_html => {:style => "width:100%;", :class => "form-control"} %>
         </div>
         <div class="col-sm-4">
-          <%= f.input :answer, :required => true, :collection => ['a','b','c','d'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select Subject" %>
+          <%= f.input :answer, :required => true, :collection => ['a','b','c','d'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select True Answer" %>
           <div class="row">
             <div class="col-sm-6">
               <%= f.input :test_count, :placeholder => "Test Count", :label => false, :input_html => {:style => "width:100%;", :value =>  params[:count], :class => "form-control"} %>
@@ -234,6 +234,11 @@
              <% break %>
              <% end %>
              <% end %>
+      </tr>
+      <tr>
+        <td></td>
+        <td>Total</td>
+        <td><b><%= @total %></b></td>
       </tr>
 </table>
 </div>

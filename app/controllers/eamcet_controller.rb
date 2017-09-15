@@ -24,7 +24,13 @@ class EamcetController < ApplicationController
   end
 
   def test_count_question
-    @eamcet = Eamcet.where(:test_count => params[:test_count])
+    @total = Eamcet.where(:test_count => params[:test_count])
+  end
+
+  def destroy
+    Eamcet.find(params[:id]).destroy
+    flash[:success] = "Eamcet test-#{params[:test_count]} question #{params[:id]} successfully"
+    redirect_to "/admineamcet/test_questions/#{params[:test_count]}"
   end
   # def physics
   # 	@ecet = Eamcet.new

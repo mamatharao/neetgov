@@ -3,7 +3,7 @@ class EcetController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin
   def index
-  	
+  	@total =Ecet.select(:test_count).map(&:test_count).uniq
   end
 
   def mathematics
@@ -49,6 +49,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
   def chemistry
@@ -71,6 +72,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
   def ece
@@ -93,6 +95,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
   def cse
@@ -115,6 +118,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
   def eee
@@ -137,6 +141,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
   def mechanical
@@ -159,6 +164,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
   def civil
@@ -181,6 +187,7 @@ class EcetController < ApplicationController
     @ecc = Ecet.where(:subject => "Electronics & Communication", :test_count => tc)
     @csc = Ecet.where(:subject => "Computer Science", :test_count => tc)
     @mecc = Ecet.where(:subject => "Mechanical", :test_count => tc)
+    @total = @mc.count+@pc.count+@cc.count+@civc.count+@eec.count+@ecc.count+@csc.count+@mecc.count
   end
 
 
@@ -192,6 +199,16 @@ class EcetController < ApplicationController
         else
             redirect_to "/addecet/#{ecet_params['short_subject']}/#{ecet_params['test_count']}", alert: "Something Wrong Please Check Input Feilds, Image allow only 'jpg jpeg gif png' "
         end
+  end
+
+  def test_count_question
+    @total = Ecet.where(:test_count => params[:test_count])
+  end
+
+  def destroy
+    Ecet.find(params[:id]).destroy
+    flash[:success] =  "Eamcet test-#{params[:test_count]} question #{params[:id]} successfully"
+    redirect_to "/adminecet/test_questions/#{params[:test_count]}"
   end
 
 
