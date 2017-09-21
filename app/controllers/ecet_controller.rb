@@ -202,7 +202,7 @@ class EcetController < ApplicationController
   end
 
   def test_count_question
-    @total = Ecet.where(:test_count => params[:test_count])
+    @total = Ecet.where(:test_count => params[:test_count], :short_subject => params[:subject])
   end
 
   def destroy

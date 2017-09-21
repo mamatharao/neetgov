@@ -48,7 +48,7 @@
 			<% end %>
 		</td>
 		<td>
-			<% if t.imagea? %>
+			<% if t.imageb? %>
 				<ul class="enlarge">
     				<li><%= image_tag(t.imageb, :width => 100, :height => 100, :class => "thumb") %>
     				<span><%= image_tag(t.imageb, :width => 600, :height => 400, :class => "thumb") %><br/>
@@ -56,12 +56,12 @@
     			</li>
     			</ul>
 			<% else %>
-				<%=t.a.html_safe %>
+				<%=t.b.html_safe %>
 			<% end %>
 		</td>
 		
 		<td>
-			<% if t.imagea? %>
+			<% if t.imagec? %>
 				<ul class="enlarge">
     				<li><%= image_tag(t.imagec, :width => 100, :height => 100, :class => "thumb") %>
     				<span><%= image_tag(t.imagec, :width => 600, :height => 400, :class => "thumb") %><br/>
@@ -69,11 +69,11 @@
     			</li>
     			</ul>
 			<% else %>
-				<%=t.a.html_safe %>
+				<%=t.c.html_safe %>
 			<% end %>	
 		</td>
 		<td>
-			<% if t.imagea? %>
+			<% if t.imaged? %>
 				<ul class="enlarge">
     				<li><%= image_tag(t.imaged, :width => 100, :height => 100, :class => "thumb") %>
     				<span><%= image_tag(t.imaged	, :width => 600, :height => 400, :class => "thumb") %><br/>
@@ -81,7 +81,7 @@
     			</li>
     			</ul>
 			<% else %>
-				<%=t.answer.html_safe %>
+				<%=t.d.html_safe %>
 			<% end %>
 		</td>
 		<td><%=t.answer.html_safe %></td>

@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   post '/addecet' => 'ecet#addecet'
 
-  get '/adminecet/test_questions/:test_count' => 'ecet#test_count_question'
+  get '/adminecet/test_questions/:test_count/:subject' => 'ecet#test_count_question'
 
   delete '/ecet/question/:id/delete/:test_count/perminent' => 'ecet#destroy'
   # ***********  EAMCET  *****************

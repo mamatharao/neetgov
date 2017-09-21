@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove(); 
+      });
+    }, 4000);
+  </script>
   </head>
 
   <body>
@@ -20,6 +27,7 @@
 	<% else %>
 	<%= render :partial => 'layouts/navbar2' %>
 	<%end%>
+  
     <%= yield %>
   </body>
 </html>

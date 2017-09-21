@@ -40,13 +40,14 @@
     <% @total.each do |t| %>
     <% if t %>
     <div class="panel panel-success">
-      <div class="panel-heading">TEST <%= t %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/adminecet/test_questions/<%=t%>"><button class="btn btn-primary">View TEST <%= t %> Questions</button></a></div>
+      <div class="panel-heading"><b>TEST <%= t %></b>
+        <!-- <a href="/adminecet/test_questions/<%=t%>"><button class="btn btn-primary">View TEST <%= t %> Questions</button></a> --></div>
       <div class="panel-body">
         <div class="row">
           <div class="col-sm-4">
         <div class="row">
           <div class="col-sm-6">
-            Mathematics
+            <a href="/adminecet/test_questions/<%=t%>/mathematics">Mathematics</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "mathematics", :test_count => t).count %></b>
@@ -55,7 +56,7 @@
       <br>
       <div class="row">
           <div class="col-sm-6">
-            Physics
+            <a href="/adminecet/test_questions/<%=t%>/physics">Physics</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "physics", :test_count => t).count %></b>
@@ -64,7 +65,7 @@
         <br>
     <div class="row">
           <div class="col-sm-6">
-            Chemistry
+            <a href="/adminecet/test_questions/<%=t%>/chemistry">Chemistry</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "chemistry", :test_count => t).count %></b>
@@ -76,7 +77,7 @@
       <div class="col-sm-4">
         <div class="row">
           <div class="col-sm-6">
-            ECE
+            <a href="/adminecet/test_questions/<%=t%>/ece">ECE</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "ece", :test_count => t).count %></b>
@@ -85,7 +86,7 @@
       <br>
       <div class="row">
           <div class="col-sm-6">
-            CSE
+            <a href="/adminecet/test_questions/<%=t%>/cse">CSE</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "cse", :test_count => t).count %></b>
@@ -94,7 +95,7 @@
         <br>
     <div class="row">
           <div class="col-sm-6">
-            EEE
+            <a href="/adminecet/test_questions/<%=t%>/eee">EEE</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "eee", :test_count => t).count %></b>
@@ -106,7 +107,7 @@
       <div class="col-sm-4">
         <div class="row">
           <div class="col-sm-6">
-            Mechanical
+            <a href="/adminecet/test_questions/<%=t%>/mechanical">Mechanical</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "mechanical", :test_count => t).count %></b>
@@ -115,7 +116,7 @@
       <br>
       <div class="row">
           <div class="col-sm-6">
-            Civil
+            <a href="/adminecet/test_questions/<%=t%>/civil">Civil</a>
           </div>
           <div class="col-sm-6">
             <b class="text-primary"><%= Ecet.where(:short_subject => "civil", :test_count => t).count %></b>

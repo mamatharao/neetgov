@@ -24,7 +24,7 @@ class EamcetController < ApplicationController
   end
 
   def test_count_question
-    @total = Eamcet.where(:test_count => params[:test_count])
+    @total = Eamcet.where(:test_count => params[:test_count]).order("subject = 'mathematics' desc").order("subject = 'physics' desc").order("subject = 'chemistry' desc")
   end
 
   def destroy
