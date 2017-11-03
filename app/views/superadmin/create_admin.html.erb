@@ -56,7 +56,7 @@
            <% @users.each do |u| %>
             <% if u.email != "khalidhmhd@gmail.com" && u.email != "apsbtetworld@gmail.com" %>
               <tr>
-              <td><%= u.fname %></td>
+              <td><%= u.fname %> <%= u.lname %></td>
               <td><%= u.email %></td>
               <td><a href="/admin/<%= u.id %>/delete"><button class="btn btn-danger">Delete</button></a></td>
             </tr>
