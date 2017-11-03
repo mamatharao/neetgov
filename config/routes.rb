@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'superadmin/index'
+
   root 'home#index'
 
-  # ***********  EAMCET  *****************
+  # ***********  ADMIN  *****************
   get "/admin" =>"admin#index"
+  get "/superadmin" =>"superadmin#index"
+  get "superadmin/create_admin" => "superadmin#create_admin"
+  post "/addsuperadmin" => "superadmin#addsuperadmin"
+  get "/admin/:id/delete" => "superadmin#delete"
 
 
   # ***********  ECET  *****************

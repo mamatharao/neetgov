@@ -5,14 +5,13 @@ class ApplicationController < ActionController::Base
 
 def check_admin
 	if authenticate_user!
-  redirect_to(root_path) unless current_user.has_role? :admin
+  		redirect_to(root_path) unless current_user.has_role? :admin
+  	end
 end
 
 def check_super_admin
 	if authenticate_user!
-  redirect_to(root_path) unless current_user.has_role? :admin && (current_user.email == "khalidhmhd@gmail.com" || current_user.email == "khalidhmhd@gmail.com")
-end
-end
-
+  		redirect_to(root_path) unless current_user.email == "khalidhmhd@gmail.com" || current_user.email == "apsbtetworld@gmail.com"
+	end
 end
 end

@@ -1,58 +1,52 @@
 <div class="content-page">
   <!-- Start content -->
   <div class="content">
-   <div class="container">
-   		<!-- <a href="addecet/mathematics">Mathematics</a><br>
-   		<a href="addecet/physics">Physics</a><br>
-   		<a href="addecet/chemistry">Chemistry</a><br>
-   		<a href="addecet/ece">Electronics & Communication</a><br>
-   		<a href="addecet/cse">Computer Science and Engineering</a><br>
-   		<a href="addecet/eee">Electrical & Electronics</a><br>
-   		<a href="addecet/mechanical">Mechanical</a><br>
-   		<a href="addecet/civil">Civil</a><br> -->
 
     <div class="row">
       <div class="col-sm-4">
-      <ol class="breadcrumb">
-          <li><b><a href="/addecet/mathematics">Mathematics</a><br></b></li><br><br>
-          <li><b><a href="/addecet/physics">Physics</a></b></li><br><br>
-          <li><b><a href="/addecet/chemistry">Chemistry</a></b></li><br>
-      </ol>
+        <ol class="breadcrumb">
+            <li><b><a href="/addecet/mathematics">Mathematics</a><br></b></li><br><br>
+            <li><b><a href="/addecet/physics">Physics</a></b></li><br><br>
+            <li><b><a href="/addecet/chemistry">Chemistry</a></b></li><br>
+        </ol>
       </div>
 
       <div class="col-sm-5">
-      <ol class="breadcrumb">
-          <li><b><a href="/addecet/ece">Electronics & Communication</a></b></li><br><br>
-          <li><b><a href="/addecet/cse">Computer Science and Engineering</a></li><br><br>
-          <li><b><a href="/addecet/eee">Electrical & Electronics</a></b></li>
-      </ol>
+        <ol class="breadcrumb">
+            <li><b><a href="/addecet/ece">Electronics & Communication</a></b></li><br><br>
+            <li><b><a href="/addecet/cse">Computer Science and Engineering</a></li><br><br>
+            <li><b><a href="/addecet/eee">Electrical & Electronics</a></b></li>
+        </ol>
       </div>
 
       <div class="col-sm-3">
-      <ol class="breadcrumb">
-          <li><b><a href="/addecet/mechanical">Mechanical</a></b></li><br><br>
-          <li><b><a href="/addecet/civil">Civil</a></b></li><br><br>
-          <br>
-      </ol>
+        <ol class="breadcrumb">
+            <li><b><a href="/addecet/mechanical">Mechanical</a></b></li><br><br>
+            <li><b><a href="/addecet/civil">Civil</a></b></li><br><br>
+            <br>
+        </ol>
       </div>
     </div>
 
     <% @total.each do |t| %>
     <% if t %>
     <div class="panel panel-success">
-      <div class="panel-heading"><b>TEST <%= t %></b>
-        <!-- <a href="/adminecet/test_questions/<%=t%>"><button class="btn btn-primary">View TEST <%= t %> Questions</button></a> --></div>
+
+      <div class="panel-heading"><b>TEST <%= t %></b></div>
+
       <div class="panel-body">
+
         <div class="row">
           <div class="col-sm-4">
-        <div class="row">
-          <div class="col-sm-6">
-            <a href="/adminecet/test_questions/<%=t%>/mathematics">Mathematics</a>
+            
+            <div class="row">
+              <div class="col-sm-6">
+                <a href="/adminecet/test_questions/<%=t%>/mathematics">Mathematics</a>
+              </div>
+              <div class="col-sm-6">
+                <b class="text-primary"><%= Ecet.where(:short_subject => "mathematics", :test_count => t).count %></b>
+              </div>
           </div>
-          <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "mathematics", :test_count => t).count %></b>
-          </div>
-      </div>
       <br>
       <div class="row">
           <div class="col-sm-6">
@@ -141,5 +135,5 @@
    <% end %>
 
   </div>
-  </div>
+
 </div>

@@ -16,11 +16,11 @@ class RegistrationsController < Devise::RegistrationsController
     @user.key = SecureRandom.hex(5)
     
     if @user.valid?
-      @user.add_role :admin
+      @user.add_role :user
       @user.key = SecureRandom.hex(5)
       @user.save
       flash[:notice] = "Success"
-      redirect_to login_url, :notice => "emailnotification"
+      redirect_to login_url, :notice => "Please check your email and confirm your account."
       # redirect_to emailnotification_url(@user), status: :found
       # redirect_to :controller => 'emailnotification'
     else

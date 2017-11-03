@@ -1,0 +1,10 @@
+<div class="">
+<p>Welcome <%= @user.lname %>!</p>
+
+<p>Neetgov added you as Admin, please login with below credintials</p>
+<p>
+	Email : <%= @user.email %><br>
+	Password : <%= @user.password %>
+
+<p><%= link_to 'Login',  'http://www.neetgov.in/admin' %></p>
+</div>
