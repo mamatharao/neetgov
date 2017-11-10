@@ -1,15 +1,24 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+    resources :eamcets
+    resources :ecets
+    resources :roles
+
+    root to: "users#index"
+  end
+
   get 'superadmin/index'
 
   root 'home#index'
 
   # ***********  ADMIN  *****************
-  get "/admin" =>"admin#index"
+  get "/board" =>"board#index"
   get "/superadmin" =>"superadmin#index"
   get "superadmin/create_admin" => "superadmin#create_admin"
   post "/addsuperadmin" => "superadmin#addsuperadmin"
-  get "/admin/:id/delete" => "superadmin#delete"
+  get "/board/:id/delete" => "superadmin#delete"
 
 
   # ***********  ECET  *****************
