@@ -1,0 +1,2 @@
+class Livetest < ApplicationRecord
+end

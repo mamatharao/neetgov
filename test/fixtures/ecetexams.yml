@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ecets: one
+  userid: 1
+  awswer: MyString
+  testcount: MyString
+  subject: MyString
+
+two:
+  ecets: two
+  userid: 1
+  awswer: MyString
+  testcount: MyString
+  subject: MyString

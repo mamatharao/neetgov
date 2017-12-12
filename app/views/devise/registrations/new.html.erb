@@ -1,6 +1,8 @@
-<div class="container">
-    <h2>Sign up</h2>
-
+  <div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+    <div class="ibox-content text-center">
+    <h1 class="text-center"><b>Registraion</b></h1>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
      <div class="bg-success"> <%= devise_error_messages! %></div>
 
@@ -22,14 +24,14 @@
       <div class="field">
         <%= f.label :password %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <!-- <em>(<%= @minimum_password_length %> characters minimum)</em> -->
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", required: true %>
+        <%= f.password_field :password, autocomplete: "off", required: true,:placeholder => "8 characters minimum" %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", required: true %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", required: true, :placeholder => "8 characters minimum" %>
       </div>
 
       <div class="field">
@@ -39,18 +41,53 @@
       
       <div class="field">
         <%= f.label :State %><br />
-        <%= f.select :state, ['Andhra Pradesh', 'Telangana'], required: true %>
+        <%= f.select :state, ['Andhra Pradesh', 'Telangana'], required: true, :class => "dropdown dropdown-toggle" %>
       </div>
       
-      <div class="field">
+      <div class="field box AP">
         <%= f.label :District %><br />
-        <%= f.text_field :district, required: true %>
+        <%= f.select :apdistrict,["Anantapur","Chittoor","East Godavari","Guntur","Kadapa","Krishna","Kurnool","Prakasam","Nellore","Srikakulam","Vishakhapatnam","Vizianagaram","West Godavari"], :prompt => "Select District"  %>
       </div>
 
+      <div class="field box TS">
+        <%= f.label :District %><br />
+        <%= f.select :tsdistrict, ["TS", "TS2"], :prompt => "Select District" %>
+      </div>
+      <br>
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- school9edu_main_Blog1_1x1_as -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-7665698555914778"
+     data-ad-slot="9074553645"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        <%= f.submit "Sign up", :class => "btn btn-primary m-b" %>
       </div>
     <% end %>
 
     <%= render "devise/shared/links" %>
 </div>
+</div>
+ <div class="col-sm-4"></div>
+</div>
+<script>
+$(document).ready(function(){
+    $(".box").hide();
+    $("select").change(function(){
+      var optionValue = $(this).val();
+      if(optionValue == "Andhra Pradesh"){
+        $(".AP").show();
+        $(".TS").hide();
+
+      } else if(optionValue == "Telangana") {
+        $(".AP").hide();
+        $(".TS").show();
+      }     
+    }).change();
+});
+
+</script>

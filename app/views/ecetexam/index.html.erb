@@ -1,0 +1,329 @@
+<% content_for :title, "NEET GOV ONLINE EXAMINATION PORTAL" %>
+<% content_for :description, "Neet Gov Providing All india Educations Updates, Notifications, Time tables, Results, Syllabus books, Etc. This Info for Helping Students We Are Providing Accurately for Official Conformation contact college section and higher authorities"%>
+  <div class="container">    
+    <div class="row text-center">
+     
+    </div>
+
+    <div class="text-center flickr_pagination">
+      <%= will_paginate @questions, :class => "flickr_pagination", :previous_label => "Previous", :next_label => 'Next', :page_links => true, renderer: BootstrapPagination::Rails %>
+    </div>
+    <style type="text/css">
+      .img{
+        width:250px;
+        height:150px;
+        border:2px;
+        border-radius: 5px;
+      }
+    </style>
+
+<% @questions.each do |q| %>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3 class="text-success"><%= q.subject %></h3>
+    </div>
+    <div class="col-sm-4">
+       <!-- Current Time :<b class="text-danger"> <%= Time.now.strftime('%l:%M %p')%></b> -->
+    </div>
+    <div class="col-sm-4">
+      <h4 class="text-success text-right">Exam started at &nbsp;&nbsp;&nbsp;<i class="fa fa-hourglass" aria-hidden="true" title="3 hours exam"></i>
+        <% @t= @time.created_at + 3*60*60 %>
+         <b class="text-danger"><%= @time.created_at.strftime('%l:%M %p')%></b>
+        <br><br>
+        <b class="text-danger text-right"><p id="demo"></p></b>
+      </h4>
+      <!-- <p id="demo"></p> -->
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-body"><%= q.question.html_safe %><br>
+      <% if q.questionimage? %>
+        <div class="row">
+          <div class="col-sm-8">
+            <p class="text-center"><span class="img-thumbnail"><%= image_tag(q.questionimage, :class => 'img-thumbnail', alt: "sbtet, neet") %></span></p>
+          </div>
+          <div class="col-sm-4"></div>
+        </div>
+      <% end %>
+    </div> 
+  </div>
+  <% if notice %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <b style="color:red"><%= alert %></b>
+      </div>
+    <% end %>
+                
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="row">     
+        <div class="col-sm-9">
+          <% @submitted = Ecetexam.where(:question_id => q.id, :userid => current_user.id, :startcount => @time.id).last %>
+          <% if @submitted.blank? %>
+              <%= simple_form_for @submitquestion, :input_html => {:id => "form_id", :class => "form-horizontal"}, url: {action: "submitquestion", method: "post"} do |f| %> 
+              <%= f.error_notification %>
+                <%= f.hidden_field :question_id, :value => q.id %>
+                <%= f.hidden_field :startcount, :value => @time.id %>
+                <%= f.hidden_field :subject, :value => params[:subject] %>
+                <% if @questions.current_page == @questions.count %>
+                  <%= f.hidden_field :pageno, :value => @questions.current_page %>
+                <% else %>
+                  <%= f.hidden_field :pageno, :value => @questions.current_page+1 %>
+                <% end %>
+                <%= f.hidden_field :testcount, :value => q.testcount %> 
+                <% if q.imageyes == "imageyes"%>
+                <!-- ################## Images options ########################### -->
+                  <% i=0 %>
+                  <%= f.collection_radio_buttons :answer,  ["a","b","c","d"],  :first, :last, item_wrapper_tag: false, :required => true, boolean_style: :inline do |b| %>
+                  <% if i == 0 %>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= image_tag(q.imagea,:class => 'img', alt: "sbtet, neet") %>
+                    </div>
+                  <% end %>
+                  <% if i == 1 %>
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= image_tag(q.imageb,:class => 'img', alt: "sbtet, neet") %>
+                    </div></div>
+                    <br>
+                  <% end %>
+                  <% if i == 2 %>
+                  <!--  <div class="row text-center">
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class='adsbygoogle' data-ad-client='ca-pub-7665698555914778' data-ad-slot='5852755247' style='display:inline-block;min-width:300px;max-width:1100px;width:100%;height:140px;'></ins> 
+                      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div> -->
+                   <div class="row">
+                    <div class="col-sm-6">
+                   <%= b.radio_button  %><%= image_tag(q.imagec,:class => 'img', alt: "sbtet, neet") %>
+                    </div>
+                  <% end %>
+                  <% if i == 3 %>
+                   <div class="col-sm-6">
+                   <%= b.radio_button  %><%= image_tag(q.imaged,:class => 'img', alt: "sbtet, neet") %>
+                    </div></div>
+                  <% end %>
+                  <% i+=1 %>
+                  
+                  <% end %>
+                <% else %>
+
+                <% i=0 %>
+                  <%= f.collection_radio_buttons :answer,  ["a","b","c","d"],  :first, :last, item_wrapper_tag: false, :required => true, boolean_style: :inline do |b| %>
+                  <% if i == 0 %>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= q.a.html_safe %>
+                    </div>
+                  <% end %>
+                  <% if i == 1 %>
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= q.b.html_safe %>
+                    </div></div>
+                    <br>
+                  <% end %>
+                  <% if i == 2 %>
+                  <!--  <div class="row text-center">
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class='adsbygoogle' data-ad-client='ca-pub-7665698555914778' data-ad-slot='5852755247' style='display:inline-block;min-width:300px;max-width:1100px;width:100%;height:140px;'></ins> 
+                      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div> -->
+                   <div class="row">
+                    <div class="col-sm-6">
+                   <%= b.radio_button  %><%= q.c.html_safe %>
+                    </div>
+                  <% end %>
+                  <% if i == 3 %>
+                   <div class="col-sm-6">
+                   <%= b.radio_button  %><%= q.d.html_safe %>
+                    </div></div>
+                  <% end %>
+                  <% i+=1 %>
+                  
+                  <% end %>
+                 <!--  <%= f.input :answer, as: :radio_buttons, :required => true, :label => false, collection: ([[q.a.html_safe,'a'] , [q.b.html_safe,'b'], [q.c.html_safe,'c'], [q.d.html_safe, 'd']]), wrapper: :vertical_radio_and_checkboxes %> -->
+                <% end %>
+                <div class="actions">
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- school9edu_main_Blog1_1x1_as -->
+                  <ins class="adsbygoogle"
+                       style="display:block"
+                       data-ad-client="ca-pub-7665698555914778"
+                       data-ad-slot="9074553645"
+                       data-ad-format="auto"></ins>
+                  <script>
+                  (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                  <%= f.submit "submit", :class => "btn btn-primary"%>
+                </div>
+                <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+                <!-- school9edumain_Blog1_1x1_as -->
+               <!--  <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-7665698555914778"
+                     data-ad-slot="9074553645"
+                     data-ad-format="auto"></ins>
+                <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script> -->
+              <% end %>
+          <% end %>
+          
+          <% if  !@submitted.blank? %>
+            <%= simple_form_for @submitted, :input_html => {:id => @submitted.id, :class => "form-horizontal"}, url: {action: "submitquestion_update", method: "patch",:id => @submitted.id } do |f| %> 
+            <%= f.error_notification %>
+            <%= f.hidden_field :question_id, :value => q.id %>
+            <%= f.hidden_field :startcount, :value => @time.id %>
+            <%= f.hidden_field :subject, :value => params[:subject] %>
+            <% if @questions.current_page == @questions.count %>
+              <%= f.hidden_field :pageno, :value => @questions.current_page %>
+            <% else %>
+              <%= f.hidden_field :pageno, :value => @questions.current_page+1 %>
+            <% end %>
+            <%= f.hidden_field :testcount, :value => q.testcount %> 
+            <% if q.imageyes == "imageyes"%>
+              <% i=0 %>
+                  <%= f.collection_radio_buttons :answer, ["a","b","c","d"],  :first, :last, item_wrapper_tag: false, :required => true, boolean_style: :inline do |b| %>
+                  <% if i == 0 %>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= image_tag(q.imagea,:class => 'img', alt: "sbtet, neet") %>
+                    </div>
+                  <% end %>
+                  <% if i == 1 %>
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= image_tag(q.imageb,:class => 'img', alt: "sbtet, neet") %>
+                    </div></div>
+                    <br>
+                  <% end %>
+                  <% if i == 2 %>
+                  <!--  <div class="row text-center">
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class='adsbygoogle' data-ad-client='ca-pub-7665698555914778' data-ad-slot='5852755247' style='display:inline-block;min-width:300px;max-width:1100px;width:100%;height:140px;'></ins> 
+                      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div> -->
+                   <div class="row">
+                    <div class="col-sm-6">
+                   <%= b.radio_button  %><%= image_tag(q.imagec,:class => 'img', alt: "sbtet, neet") %>
+                    </div>
+                  <% end %>
+                  <% if i == 3 %>
+                   <div class="col-sm-6">
+                   <%= b.radio_button  %><%= image_tag(q.imaged,:class => 'img', alt: "sbtet, neet") %>
+                    </div></div>
+                  <% end %>
+                  <% i+=1 %>
+                  
+                  <% end %>
+            <% else %>
+
+              <% i=0 %>
+             <%= f.collection_radio_buttons :answer,   ["a","b","c","d"],  :first, :last, item_wrapper_tag: false, :required => true, boolean_style: :inline do |b| %>
+                  <% if i == 0 %>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <%= b.radio_button  %><%= q.a.html_safe %>
+                      </div>
+                  <% end %>
+                  <% if i == 1 %>
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= q.b.html_safe %>
+                    </div></div>
+                    <br>
+                  <% end %>
+
+                  <% if i == 2 %>
+                    <!-- <div class="row text-center">
+                      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class='adsbygoogle' data-ad-client='ca-pub-7665698555914778' data-ad-slot='5852755247' style='display:inline-block;min-width:300px;max-width:1100px;width:100%;height:140px;'></ins> 
+                      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div> -->
+                   <div class="row">
+                    <div class="col-sm-6">
+                      <%= b.radio_button  %><%= q.c.html_safe %>
+                    </div>
+                  <% end %>
+                  <% if i == 3 %>
+                   <div class="col-sm-6">
+                      <%= b.radio_button  %><%= q.d.html_safe %>
+                    </div></div>
+                  <% end %>
+                  <% i+=1 %>
+              
+              <% end %>
+              <!-- 
+              <%= f.input :answer, as: :radio_buttons, :required => true, :label => false, collection: ([[q.a.html_safe,'a'] , [q.b.html_safe,'b'], [q.c.html_safe,'c'], [q.d.html_safe, 'd']]), wrapper: :vertical_radio_and_checkboxes %> -->
+            <% end %><br><br>
+            <%= f.submit "Submit", :class => "btn btn-primary"%>
+          <% end %>
+            <% end %>
+            
+        </div>
+        <div class="col-sm-1 text-center">
+        </div>
+        <div class="col-sm-2 text-center"><br><br><br>
+          <% @endtime = q.testcount %>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">
+    </div>
+        <div class="col-sm-5">
+    </div>
+    <div class="col-sm-2">
+      <a href="/ecetresults/<%= params[:subject] %>/<%= q.testcount %>" > <button class="btn btn-danger">Finsh Exam</button></a>
+    </div>
+    
+  </div>
+<% end %>
+
+  <div class="text-center"> 
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <ins class='adsbygoogle' data-ad-client='ca-pub-7665698555914778' data-ad-slot='5852755247' style='display:inline-block;min-width:300px;max-width:1100px;width:100%;height:140px;'></ins>      
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+</div>
+
+<script>
+  // Set the date we're counting down to
+  var countDownDate = new Date("<%= @t.strftime("%B")%> <%=  @t.strftime("%d") %>, <%=  @t.strftime("%Y") %> <%= @t.strftime('%H:%M:%S')%>").getTime();
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+  // Get todays date and time
+  var now = new Date().getTime();   
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);    
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML =  hours + "h "+ minutes + "m " + seconds + "s ";
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+      document.getElementById("demo").innerHTML = "3 hours completed";
+      console.log("above")
+      $.ajax({
+        url: '/ecettimesubmit',
+        type: 'PATCH',
+        data: "count=<%= @endtime %>&subject=<%= params[:subject] %>",
+        success: function(data) {
+          alert('Time Up, Please click finish exam button to see your result');
+        }
+      });
+      
+    }
+  }, 1000);
+</script>

@@ -1,0 +1,69 @@
+<% content_for :title, "NEET GOV ONLINE EXAMINATION PORTAL" %>
+<% content_for :description, "Neet Gov Providing All india Educations Updates, Notifications, Time tables, Results, Syllabus books, Etc. This Info for Helping Students We Are Providing Accurately for Official Conformation contact college section and higher authorities"%>
+ <div class="container">
+  <% if notice %>
+      <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= alert %>
+    </div>
+  <% end %>
+<div class="row">
+      <div class="col-sm-12">
+        <h4 class="page-title"></h4>
+        <ol class="breadcrumb">
+          <li><b><a href="/">Home</a></b></li>
+          <li><b><a href="/superadmin">Super Admin</a></b></li>
+          <li class="active">Live Tests</li>
+        </ol>
+     </div>
+ </div>
+  <%= simple_form_for @livetest, url: {:action => "addlivetest",  :method => "post"} do |f| %>
+      <div class="row">
+        <div class="col-md-3">
+          <%= f.input :cet, :collection => ['ecet','eamcet'], :prompt => "Select CET", :required => true, :autofocus => true, :label => false, :input_html => { :class => "form-control addweb"} %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :subject,  :collection => ['cse','ece','eee','mechanical','civil'], :required => true, :prompt => "Select Status", :label => false, :input_html => { :class => "form-control addweb"} %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :testcount, :required => true, :placeholder => "Test count", :label => false, :input_html => { :class => "form-control addweb"} %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :status, :collection => ['yes'],:required => true, :prompt => "Select Status", :label => false, :input_html => { :class => "form-control addweb"} %>
+        </div>
+      </div>
+      
+      <%= f.submit "Submit", :class => "btn btn-info" %>
+  <% end %>
+
+  <table class="table table-bordered table-hover">
+    <tr class="text-center">
+      <th>Cet</th>
+      <th>Subject</th>
+      <th>testcount</th>
+      <th>status</th>
+      <th>Key</th>
+    </tr>
+    <% @livetests.each do |l| %>
+      <tr class="danger">
+          <td> <%= l.cet %></td>
+          <td><%= l.subject %></td>
+          <td><%= l.testcount %></td>
+          <td><%= l.status %></td>
+          <td><%= l.key %></td>
+      </tr>
+      <% end %>
+    </table>
+
+
+
+     
+</div>
+
+

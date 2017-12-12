@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  testcount: 1
+  userid: 1
+  cet: MyString
+  subject: MyString
+  shortsubject: MyString
+
+two:
+  testcount: 1
+  userid: 1
+  cet: MyString
+  subject: MyString
+  shortsubject: MyString

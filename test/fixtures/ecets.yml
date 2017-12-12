@@ -10,7 +10,7 @@ one:
   answer: MyString
   test_count: 1
   type: 
-  que_image: MyString
+  questionimage: MyString
   imagea: MyString
   imageb: MyString
   imagec: MyString
@@ -27,7 +27,7 @@ two:
   answer: MyString
   test_count: 1
   type: 
-  que_image: MyString
+  questionimage: MyString
   imagea: MyString
   imageb: MyString
   imagec: MyString

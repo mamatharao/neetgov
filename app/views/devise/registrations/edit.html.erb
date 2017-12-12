@@ -1,4 +1,4 @@
-<div class="container">
+<div class="text-center">
 
     <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
@@ -22,7 +22,7 @@
       </div>
 
       <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.label :current_password %><br><i>(current password to confirm your changes)</i><br />
         <%= f.password_field :current_password, autocomplete: "off" %>
       </div>
 
@@ -31,17 +31,17 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
+        <%= f.label :password %><br><i>(leave blank if you don't want to change it)</i><br />
+        <%= f.password_field :password, autocomplete: "off", :placeholder => "8 characters minimum" %>
         <% if @minimum_password_length %>
           <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
+          <!-- <em><%= @minimum_password_length %> characters minimum</em> -->
         <% end %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", :placeholder => "8 characters minimum" %>
       </div>
 
       <div class="actions">

@@ -44,7 +44,7 @@
                 <a href="/adminecet/test_questions/<%=t%>/mathematics">Mathematics</a>
               </div>
               <div class="col-sm-6">
-                <b class="text-primary"><%= Ecet.where(:short_subject => "mathematics", :test_count => t).count %></b>
+                <b class="text-primary"><%= Ecet.where(:short_subject => "mathematics", :testcount => t).count %></b>
               </div>
           </div>
       <br>
@@ -53,7 +53,7 @@
             <a href="/adminecet/test_questions/<%=t%>/physics">Physics</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "physics", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "physics", :testcount => t).count %></b>
           </div>
       </div>
         <br>
@@ -62,7 +62,7 @@
             <a href="/adminecet/test_questions/<%=t%>/chemistry">Chemistry</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "chemistry", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "chemistry", :testcount => t).count %></b>
           </div>
       </div>
       <br>
@@ -74,7 +74,7 @@
             <a href="/adminecet/test_questions/<%=t%>/ece">ECE</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "ece", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "ece", :testcount => t).count %></b>
           </div>
       </div>
       <br>
@@ -83,7 +83,7 @@
             <a href="/adminecet/test_questions/<%=t%>/cse">CSE</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "cse", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "cse", :testcount => t).count %></b>
           </div>
       </div>
         <br>
@@ -92,7 +92,7 @@
             <a href="/adminecet/test_questions/<%=t%>/eee">EEE</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "eee", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "eee", :testcount => t).count %></b>
           </div>
       </div>
       <br>
@@ -104,7 +104,7 @@
             <a href="/adminecet/test_questions/<%=t%>/mechanical">Mechanical</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "mechanical", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "mechanical", :testcount => t).count %></b>
           </div>
       </div>
       <br>
@@ -113,7 +113,7 @@
             <a href="/adminecet/test_questions/<%=t%>/civil">Civil</a>
           </div>
           <div class="col-sm-6">
-            <b class="text-primary"><%= Ecet.where(:short_subject => "civil", :test_count => t).count %></b>
+            <b class="text-primary"><%= Ecet.where(:short_subject => "civil", :testcount => t).count %></b>
           </div>
       </div>
         <br>
@@ -122,7 +122,7 @@
             <b class="text-danger">Total</b>
           </div>
           <div class="col-sm-6">
-            <b class="text-danger"><%= Ecet.where(:test_count => t).count %></b>
+            <b class="text-danger"><%= Ecet.where(:testcount => t).count %></b>
           </div>
       </div>
       <br>

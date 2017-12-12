@@ -1,0 +1,2 @@
+class Testcount < ApplicationRecord
+end

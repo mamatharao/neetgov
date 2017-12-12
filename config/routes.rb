@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
 
+
+
   namespace :admin do
     resources :users
     resources :eamcets
     resources :ecets
     resources :roles
+    resources :livetests
+    resources :testcounts
 
     root to: "users#index"
   end
@@ -13,12 +17,17 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  # *********** HOME  ******************
+  
+
   # ***********  ADMIN  *****************
   get "/board" =>"board#index"
   get "/superadmin" =>"superadmin#index"
   get "superadmin/create_admin" => "superadmin#create_admin"
   post "/addsuperadmin" => "superadmin#addsuperadmin"
   get "/board/:id/delete" => "superadmin#delete"
+  get '/superadmin/livetests' => 'superadmin#livetests'
+  post '/addlivetest' => 'superadmin#addlivetest'
 
 
   # ***********  ECET  *****************
@@ -50,16 +59,26 @@ Rails.application.routes.draw do
 
   post '/addecet' => 'ecet#addecet'
 
-  get '/adminecet/test_questions/:test_count/:subject' => 'ecet#test_count_question'
+  get '/adminecet/test_questions/:testcount/:subject' => 'ecet#testcount_question'
 
-  delete '/ecet/question/:id/delete/:test_count/perminent' => 'ecet#destroy'
+  delete '/ecet/question/:id/delete/:testcount/perminent' => 'ecet#destroy'
+  ################ ECET EXAM ######################
+  get '/exam/ecet/:subject/:count' => 'ecetexam#index'
+  post '/submitquestion/ecet' => 'ecetexam#submitquestion'
+  get '/ecetresults/:subject/:count/' => 'ecetexam#ecetresults'
+  patch '/submitquestion_update' => 'ecetexam#submitquestion_update'
+  patch '/ecettimesubmit' => 'ecetexam#ecettimesubmit'
+
+  get '/ecet-subjects' => 'ecetexam#ecet_subjects'
+  get '/ecet-subjects-tests/:subject' => 'ecetexam#ecet_subjects_tests'
+  
   # ***********  EAMCET  *****************
   get '/admineamcet' => "eamcet#index"
   get "/addeamcet/:subject/:count" => "eamcet#addeamcet"
   get "/addeamcet/:subject" => "eamcet#addeamcet"
-  get '/admineamcet/test_questions/:test_count' => 'eamcet#test_count_question'
+  get '/admineamcet/test_questions/:testcount' => 'eamcet#testcount_question'
   post '/addemacetque' => 'eamcet#addemacet_que'
-  delete '/eamcet/question/:id/delete/:test_count/perminent' => 'eamcet#destroy'
+  delete '/eamcet/question/:id/delete/:testcount/perminent' => 'eamcet#destroy'
 
 
 

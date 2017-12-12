@@ -10,8 +10,8 @@ one:
   d: MyString
   answer: MyString
   test_count: 1
-  image_yes: MyString
-  image_question: MyString
+  imageyes: MyString
+  questionimage: MyString
   imagea: MyString
   imageb: MyString
   imagec: MyString
@@ -28,8 +28,8 @@ two:
   d: MyString
   answer: MyString
   test_count: 1
-  image_yes: MyString
-  image_question: MyString
+  imageyes: MyString
+  questionimage: MyString
   imagea: MyString
   imageb: MyString
   imagec: MyString

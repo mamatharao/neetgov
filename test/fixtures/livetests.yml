@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cet: MyString
+  subject: MyString
+  testcount: 1
+  status: MyString
+  key: MyString
+
+two:
+  cet: MyString
+  subject: MyString
+  testcount: 1
+  status: MyString
+  key: MyString

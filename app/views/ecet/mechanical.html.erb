@@ -66,7 +66,7 @@
       <div class="col-sm-5">
         <div class="row">
           <div class="col-sm-4">Question Image :</div>
-          <div class="col-sm-6"><%= f.file_field :que_image %></div>
+          <div class="col-sm-6"><%= f.file_field :questionimage %></div>
         </div>
       </div>
     </div> 
@@ -84,10 +84,10 @@
           <%= f.input :answer, :required => true, :collection => ['a','b','c','d'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select True Answer" %>
           <div class="row">
             <div class="col-sm-6">
-              <%= f.input :test_count, :placeholder => "Test Count", :label => false, :input_html => {:style => "width:100%;", :value =>  params[:count], :class => "form-control"} %>
+              <%= f.input :testcount, :placeholder => "Test Count", :label => false, :input_html => {:style => "width:100%;", :value =>  params[:count], :class => "form-control"} %>
             </div>
             <div class="col-sm-6">
-               <%= f.input :image_yes, :collection => ['image_yes'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select Type" %>
+               <%= f.input :imageyes, :collection => ['imageyes'], :label => false, :input_html => {:style => "width:100%;", :class => "form-control"}, :prompt => "Select Type" %>
             </div>
           </div>
         </div>
@@ -126,7 +126,7 @@
             <td class="bg-primary">0</td>      
             <% else %>
             <% @mecc.each do |m| %>
-               <td class="bg-primary"><%= m.test_count %></td>
+               <td class="bg-primary"><%= m.testcount %></td>
               <td class="bg-primary"><%= @mecc.count %></td> 
              <% break %>
              <% end %>
@@ -140,7 +140,7 @@
             <td>0</td>      
             <% else %>
             <% @mc.each do |m| %>
-               <td><%= m.test_count %></td>
+               <td><%= m.testcount %></td>
               <td><%= @mc.count %></td> 
              <% break %>
              <% end %>
@@ -155,7 +155,7 @@
             <td>0</td>      
             <% else %>
             <% @pc.each do |p| %>
-               <td><%= p.test_count %></td>
+               <td><%= p.testcount %></td>
               <td><%= @pc.count %></td> 
              <% break %>
              <% end %>
@@ -169,7 +169,7 @@
             <td>0</td>      
             <% else %>
             <% @cc.each do |c| %>
-               <td><%= c.test_count %></td>
+               <td><%= c.testcount %></td>
               <td><%= @cc.count %></td> 
              <% break %>
              <% end %>
@@ -183,7 +183,7 @@
             <td>0</td>      
             <% else %>
             <% @civc.each do |c| %>
-               <td><%= c.test_count %></td>
+               <td><%= c.testcount %></td>
               <td><%= @civc.count %></td> 
              <% break %>
              <% end %>
@@ -198,7 +198,7 @@
             <td>0</td>      
             <% else %>
             <% @eec.each do |c| %>
-               <td><%= c.test_count %></td>
+               <td><%= c.testcount %></td>
               <td><%= @eec.count %></td> 
              <% break %>
              <% end %>
@@ -213,7 +213,7 @@
             <td>0</td>      
             <% else %>
             <% @ecc.each do |c| %>
-               <td><%= c.test_count %></td>
+               <td><%= c.testcount %></td>
               <td><%= @ecc.count %></td> 
              <% break %>
              <% end %>
@@ -229,7 +229,7 @@
             <td>0</td>      
             <% else %>
             <% @csc.each do |c| %>
-               <td><%= c.test_count %></td>
+               <td><%= c.testcount %></td>
               <td><%= @csc.count %></td> 
              <% break %>
              <% end %>

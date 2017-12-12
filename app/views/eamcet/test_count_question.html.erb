@@ -25,10 +25,10 @@
 		<td><%= c %></td>
 		<td>
 			<%=t.question.html_safe %>
-			<% if t.que_image? %>
+			<% if t.questionimage? %>
 				<ul class="enlarge">
-			    <li><%= image_tag(t.que_image, :width => 400, :height => 200, :class => "thumb") %>
-			    	<span><%= image_tag(t.que_image, :width => 600, :height => 400, :class => "thumb") %><br/>
+			    <li><%= image_tag(t.questionimage, :width => 400, :height => 200, :class => "thumb") %>
+			    	<span><%= image_tag(t.questionimage, :width => 600, :height => 400, :class => "thumb") %><br/>
 			    				<b class="text-danger">Move slide bar left or right to view fiull Image</b></span>
 			    			</li>
 			    </ul>
@@ -84,7 +84,7 @@
 			<% end %>
 		</td>
 		<td><%=t.answer.html_safe %></td>
-		<td><%= link_to "delete","/eamcet/question/#{t.id}/delete/#{t.test_count}/perminent", method: :delete, data: { confirm: "Delete S.No - #{c} ?"} %>
+		<td><%= link_to "delete","/eamcet/question/#{t.id}/delete/#{t.testcount}/perminent", method: :delete, data: { confirm: "Delete S.No - #{c} ?"} %>
 	</tr>
 	<% c+=1 %>
 <% end %>
